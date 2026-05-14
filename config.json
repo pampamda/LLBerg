@@ -1,0 +1,14 @@
+{
+  "sprite_size": 150,
+  "animation_ms": 180,
+  "move_ms": 50,
+  "walk_speed": 1.5,
+  "walk_range": 200,
+  "screen_margin": 80,
+  "dialogue_ttl_ms": 3000,
+  "phrases": [
+    "Meow",
+    "Ksksksk",
+    "Hello"
+  ]
+}

@@ -1,0 +1,48 @@
+name: Build macOS App
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:        # 允许在 GitHub 页面上手动触发
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install pyinstaller pyqt6 pillow
+
+      - name: Build .app bundle
+        run: |
+          pyinstaller \
+            --windowed \
+            --name "VirtualBerg" \
+            --add-data "assets:assets" \
+            --add-data "config.json:." \
+            main.py
+
+      - name: Create DMG installer
+        run: |
+          brew install create-dmg
+          create-dmg \
+            --volname "VirtualBerg" \
+            --window-size 540 320 \
+            --icon-size 120 \
+            --app-drop-link 400 150 \
+            --icon "VirtualBerg.app" 130 150 \
+            "VirtualBerg.dmg" \
+            "dist/"
+
+      - name: Upload DMG as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: VirtualBerg-macOS
+          path: VirtualBerg.dmg
+          retention-days: 30
