@@ -1,14 +1,30 @@
 {
-  "sprite_size": 150,
+  "sprite_size": 200,
   "animation_ms": 180,
   "move_ms": 50,
   "walk_speed": 1.5,
+  "return_speed": 4.0,
   "walk_range": 200,
+  "return_threshold": 50,
+  "run_accel": 0.5,
+  "run_max_speed": 12.0,
   "screen_margin": 80,
+  "idle_min_ticks": 600,
+  "idle_max_ticks": 1800,
+  "idle_next_weights": {"lie": 30, "walk": 30, "lick": 25, "chill": 15},
+  "tick_scale": 1,
+  "easter_max_size": 160,
   "dialogue_ttl_ms": 3000,
   "phrases": [
-    "Meow",
-    "Ksksksk",
-    "Hello"
+    "утр дбр.",
+    "а с вами можно?",
+    "не знаю. мур.",
+    "сижу.",
+    "лежу.",
+    "привет) Лёша.",
+    "...",
+    "гладь по голове.",
+    "кот существует.",
+    "дааа"
   ]
 }

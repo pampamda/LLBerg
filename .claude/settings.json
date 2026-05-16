@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch"
+      "WebSearch",
+      "Bash(python -)",
+      "Bash(python normalize_sprites.py)"
     ]
   }
 }

@@ -6,7 +6,7 @@ from PyQt6.QtWidgets import QWidget, QLabel, QVBoxLayout
 class DialogueBubble(QWidget):
     """Rounded speech bubble that auto-closes after ttl_ms."""
 
-    PADDING = 12
+    PADDING = 4
     TAIL_HEIGHT = 10
 
     def __init__(self, text: str, ttl_ms: int, parent=None):
@@ -19,15 +19,15 @@ class DialogueBubble(QWidget):
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
 
         self._label = QLabel(text, self)
-        self._label.setWordWrap(True)
+        self._label.setWordWrap(False)
         self._label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self._label.setStyleSheet(
-            "color: #333333; font-size: 14px; font-family: 'PingFang SC', 'Hiragino Sans GB', sans-serif;"
+            "background: transparent; color: #333333; font-size: 14px;"
+            " font-family: 'PingFang SC', 'Hiragino Sans GB', sans-serif;"
         )
-        self._label.setMaximumWidth(220)
         self._label.adjustSize()
 
-        content_w = min(220, self._label.sizeHint().width()) + self.PADDING * 2
+        content_w = self._label.sizeHint().width() + self.PADDING * 2
         content_h = self._label.sizeHint().height() + self.PADDING * 2
         total_h = content_h + self.TAIL_HEIGHT
 
