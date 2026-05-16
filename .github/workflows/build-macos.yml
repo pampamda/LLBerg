@@ -23,7 +23,8 @@ jobs:
         run: |
           pyinstaller \
             --windowed \
-            --name "VirtualBerg" \
+            --name "LLBerg" \
+            --icon "assets/icon.icns" \
             --add-data "assets:assets" \
             --add-data "config.json:." \
             main.py
@@ -32,17 +33,17 @@ jobs:
         run: |
           brew install create-dmg
           create-dmg \
-            --volname "VirtualBerg" \
+            --volname "LLBerg" \
             --window-size 540 320 \
             --icon-size 120 \
             --app-drop-link 400 150 \
-            --icon "VirtualBerg.app" 130 150 \
-            "VirtualBerg.dmg" \
+            --icon "LLBerg.app" 130 150 \
+            "LLBerg.dmg" \
             "dist/"
 
       - name: Upload DMG as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: VirtualBerg-macOS
-          path: VirtualBerg.dmg
+          name: LLBerg-macOS
+          path: LLBerg.dmg
           retention-days: 30
